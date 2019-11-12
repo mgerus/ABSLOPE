@@ -91,6 +91,14 @@ class CompareByNumericVectorValues {
 // Writes down in IntegerVector ord sequnce of indexes,
 // such that w[ord[i]] >= w[ord[j]] whenever i <= j
 // for the given NumericVector w.
+template<class ForwardIt, class T>
+void iota(ForwardIt first, ForwardIt last, T value)
+{
+    while(first != last) {
+        *first++ = value;
+        ++value;
+    }
+}
 void argsort(const NumericVector& w, IntegerVector ord) {
 	iota(ord.begin(), ord.end(), 0);
 	CompareByNumericVectorValues comp = CompareByNumericVectorValues(&w);
