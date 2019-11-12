@@ -1,7 +1,7 @@
 #include<RcppArmadillo.h>
 #include<math.h>
 #include<stdlib.h>
-#include<numeric.h>
+#include<numeric>
 #include<algorithm>
 
 //[[Rcpp::depends(RcppArmadillo)]]
@@ -92,7 +92,7 @@ class CompareByNumericVectorValues {
 // such that w[ord[i]] >= w[ord[j]] whenever i <= j
 // for the given NumericVector w.
 void argsort(const NumericVector& w, IntegerVector ord) {
-	std::iota(ord.begin(), ord.end(), 0);
+	iota(ord.begin(), ord.end(), 0);
 	CompareByNumericVectorValues comp = CompareByNumericVectorValues(&w);
 	std::sort(ord.begin(), ord.end(), comp);
 }
